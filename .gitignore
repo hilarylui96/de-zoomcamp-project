@@ -1,0 +1,5 @@
+.google
+myenv
+.ipynb_checkpoints
+*_pycache__*
+logs
