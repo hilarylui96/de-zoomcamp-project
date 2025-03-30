@@ -12,8 +12,8 @@ from airflow.providers.google.cloud.operators.dataproc import (
     DataprocDeleteClusterOperator,
     DataprocSubmitJobOperator,
 )
-from airflow.utils.dates import days_ago
 from airflow.providers.google.cloud.transfers.local_to_gcs import LocalFilesystemToGCSOperator
+from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
 
 DEFAULT_ARGS = {
   "gcp_conn_id": "google_cloud_default",
@@ -44,8 +44,9 @@ PYSPARK_JOB = {
     "pyspark_job": {"main_python_file_uri": "gs://weather_alerts_hlui/spark/spark_processing.py"},
 }
 
-file_name = f"{datetime.strftime(datetime.today(), '%Y-%m-%d')}.json"
-file_name_parquet = f"{datetime.strftime(datetime.today(), '%Y-%m-%d')}.parquet"
+ingestion_date = datetime.strftime(datetime.today(), '%Y-%m-%d')
+file_name = f"{ingestion_date}.json"
+file_name_parquet = f"{ingestion_date}.parquet"
 inward_path = "/data"
 outward_path = "/opt/airflow/data"
 
@@ -56,15 +57,6 @@ def ingest():
   data = response.json()
   with open(f'{outward_path}/raw_json/{file_name}', "w") as f:
     json.dump(data.get('features',[]), f)
-
-spark_job = {
-    "reference": {"project_id": "western-diorama-455122-u6"},
-    "placement": {"cluster_name": "your-cluster-name"},
-    "pyspark_job": {
-        "main_python_file_uri": "gs://your-bucket/scripts/your_spark_job.py"
-    }
-}
-
 
 with DAG (
   dag_id="ingest_weather_alerts",
@@ -101,11 +93,19 @@ with DAG (
       job=PYSPARK_JOB
     )
   
-  delete_cluster = DataprocDeleteClusterOperator(
-        task_id="delete_cluster",
-        trigger_rule="all_done"  # Ensures cluster is deleted even if job fails
-    )
+  # delete_cluster = DataprocDeleteClusterOperator(
+  #       task_id="delete_cluster",
+  #       trigger_rule="all_done"  # Ensures cluster is deleted even if job fails
+  #   )
+  
+  # create_temp_bq_table = GCSToBigQueryOperator(
+  #       task_id='load_parquet_to_bq',
+  #       source_objects=[f'parquet/{ingestion_date}/*'],
+  #       destination_project_dataset_table=f'western-diorama-455122-u6.weather_staging.alerts_{ingestion_date}',
+  #       source_format='PARQUET',
+  #       write_disposition='WRITE_TRUNCATE',
+  #       autodetect=True
+  #   )
 
 
-
-ingest_data >> upload_to_gcs_task >> [upload_script, create_cluster] >> submit_job >> delete_cluster
+ingest_data >> upload_to_gcs_task >> [upload_script, create_cluster] >> submit_job
