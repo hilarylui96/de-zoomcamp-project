@@ -6,8 +6,8 @@ terraform {
     }
   }
   backend "gcs" {
-    bucket  = var.terraform_state_bucket_name   # <- this bucket must already exist
-    prefix  = "env/prod"                    # <- folder path inside the bucket
+    bucket  = terraform-state-hlui   # <- this bucket must already exist
+    prefix  = "env/prod"             # <- folder path inside the bucket
   }
 }
 
