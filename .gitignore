@@ -1,4 +1,4 @@
-.google/credentials.json
+*credentials.json
 myenv
 .ipynb_checkpoints
 *_pycache__*
