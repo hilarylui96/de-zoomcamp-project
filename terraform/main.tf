@@ -5,6 +5,10 @@ terraform {
       version = "5.6.0"
     }
   }
+  backend "gcs" {
+    bucket  = var.terraform_state_bucket_name   # <- this bucket must already exist
+    prefix  = "env/prod"                    # <- folder path inside the bucket
+  }
 }
 
 provider "google" {

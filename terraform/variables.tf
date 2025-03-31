@@ -17,7 +17,7 @@ variable "airflow_sa" {
   default = "serviceAccount: airflow@western-diorama-455122-u6.iam.gserviceaccount.com"
 }
 
-variable "terrarform_sa" {
+variable "terraform_sa" {
   default = "serviceAccount:terraform@western-diorama-455122-u6.iam.gserviceaccount.com"
 }
 
@@ -39,4 +39,9 @@ variable "gcs_bucket_name" {
 variable "gcs_temp_bucket_name" {
   description = "My Temp Storage Bucket Name"
   default     = "weather-alerts-hlui-temp"
+}
+
+variable "terraform_state_bucket_name" {
+  description = "My Terraform State Bucket Name"
+  default     = "terraform-state-hlui"
 }
