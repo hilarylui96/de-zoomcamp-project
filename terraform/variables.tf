@@ -30,5 +30,5 @@ variable "bq_stag_dataset_name" {
 variable "gcs_test_bucket_name" {
   description = "My Test Storage Bucket Name"
   #Update the below to a unique bucket name
-  default     = "terraform-demo-terra-bucket"
+  default     = "terraform-demo-terra-bucket-hlui-de-zoomcamp"
 }
