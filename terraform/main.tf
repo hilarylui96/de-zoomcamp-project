@@ -49,7 +49,7 @@ resource "google_project_iam_member" "terraform_sa_roles" {
   ])
   project = var.project
   role    = each.value
-  member  = var.terrarform_sa
+  member  = var.terraform_sa
 }
 
 resource "google_project_iam_member" "airflow_sa_roles" {
