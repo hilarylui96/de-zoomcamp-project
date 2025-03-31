@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "gcs" {
-    bucket  = terraform-state-hlui   # <- this bucket must already exist
+    bucket  = "terraform-state-hlui"   # <- this bucket must already exist
     prefix  = "env/prod"             # <- folder path inside the bucket
   }
 }
