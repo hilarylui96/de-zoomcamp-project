@@ -14,7 +14,7 @@ variable "location" {
 }
 
 variable "airflow_sa" {
-  default = "serviceAccount: airflow@western-diorama-455122-u6.iam.gserviceaccount.com"
+  default = "serviceAccount:airflow@western-diorama-455122-u6.iam.gserviceaccount.com"
 }
 
 variable "terraform_sa" {
