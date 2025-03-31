@@ -1,5 +1,4 @@
-CONTAINER_PATH = "/opt/airflow/data"
-USER = 'hilaryluitszching@gmail.com'
+# You can update all variables that are necessary for reproducing results 
 PROJECT_ID = "western-diorama-455122-u6"
 LOCATION = "US"
 BUCKET = "weather_alerts_hlui"
@@ -10,6 +9,7 @@ PROD_DATASET_ID = "weather_prod"
 GCS_PATH = "gs://weather_alerts_hlui/"
 CLUSTER_NAME = 'weather-alerts'
 
+CONTAINER_PATH = "/opt/airflow/data"
 DEFAULT_ARGS = {
   "gcp_conn_id": "google_cloud_default",
   "project_id": PROJECT_ID,

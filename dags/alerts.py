@@ -42,7 +42,7 @@ with DAG (
 ) as dag:
   
   # Note: These will only get parsed inside tasks 
-  # Does not work if you do something like file_name = f"{exuection_date}.json" here. Have to do it inside the tasks
+  # Does not work if you do something like file_name = f"{exuection_date}.json" here. Have to do it inside tasks
   execution_date = "{{ execution_date.strftime('%Y-%m-%d') }}"
   end_date = "{{ (execution_date + macros.timedelta(days=1)).strftime('%Y-%m-%d') }}"
   
