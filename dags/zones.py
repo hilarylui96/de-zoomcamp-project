@@ -92,4 +92,3 @@ with DAG (
   [upload_script, upload_to_gcs_task, create_cluster] >> submit_job
   submit_job >> [delete_cluster, purge_file_task]
   
-  
