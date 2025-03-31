@@ -51,15 +51,3 @@ resource "google_project_iam_member" "terraform_sa_roles" {
   role    = each.value
   member  = var.terraform_sa
 }
-
-resource "google_project_iam_member" "airflow_sa_roles" {
-  for_each = toset([
-  "roles/storage.admin",
-  "roles/bigquery.admin",
-  "roles/editor",
-  "roles/dataproc.admin",
-  ])
-  project = var.project
-  role    = each.value
-  member  = var.airflow_sa
-}
