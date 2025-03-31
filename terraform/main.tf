@@ -40,12 +40,7 @@ resource "google_bigquery_dataset" "stag_dataset" {
 
 resource "google_project_iam_member" "terraform_sa_roles" {
   for_each = toset([
-  "roles/storage.admin",
-  "roles/bigquery.admin",
-  "roles/editor",
-  "roles/resourcemanager.projectIamAdmin",
-  "roles/iam.serviceAccountAdmin",
-  "roles/iam.securityAdmin"
+  "roles/owner"
   ])
   project = var.project
   role    = each.value
