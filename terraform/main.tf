@@ -34,13 +34,6 @@ resource "google_bigquery_dataset" "stag_dataset" {
   location   = var.location
 }
 
-resource "google_bigquery_dataset_iam_member" "access" {
-  for_each   = toset(var.dataset_members)
-  dataset_id = var.bq_prod_dataset_name
-  role       = "roles/bigquery.dataEditor"
-  member     = each.value
-}
-
 resource "google_project_iam_member" "terraform_sa_roles" {
   for_each = toset([
   "roles/storage.admin",

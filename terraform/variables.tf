@@ -21,16 +21,6 @@ variable "terrarform_sa" {
   default = "serviceAccount:terraform@western-diorama-455122-u6.iam.gserviceaccount.com"
 }
 
-variable "bq_prod_dataset_name" {
-  description = "My Prod BigQuery Dataset Name"
-  default     = "weather_prod"
-}
-
-variable "bq_stag_dataset_name" {
-  description = "My Prod BigQuery Dataset Name"
-  default     = "weather_staging"
-}
-
 variable "gcs_bucket_name" {
   description = "My Storage Bucket Name"
   default     = "weather-alerts-hlui"

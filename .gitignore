@@ -1,6 +1,6 @@
 *credentials.json
 myenv
 .ipynb_checkpoints
+.ipynb*
 *_pycache__*
 logs
-Untitled*
