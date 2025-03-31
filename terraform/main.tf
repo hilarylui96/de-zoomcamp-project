@@ -12,8 +12,55 @@ provider "google" {
   region      = var.region
 }
 
-resource "google_storage_bucket" "demo-bucket" {
-  name          = var.gcs_test_bucket_name
+resource "google_storage_bucket" "bucket" {
+  name          = var.gcs_bucket_name
   location      = var.location
   force_destroy = false
+}
+
+resource "google_storage_bucket" "temp-bucket" {
+  name          = var.gcs_temp_bucket_name
+  location      = var.location
+  force_destroy = false
+}
+
+resource "google_bigquery_dataset" "prod_dataset" {
+  dataset_id = var.bq_prod_dataset_name
+  location   = var.location
+}
+
+resource "google_bigquery_dataset" "stag_dataset" {
+  dataset_id = var.bq_stag_dataset_name
+  location   = var.location
+}
+
+resource "google_bigquery_dataset_iam_member" "access" {
+  for_each   = toset(var.dataset_members)
+  dataset_id = var.bq_prod_dataset_name
+  role       = "roles/bigquery.dataEditor"
+  member     = each.value
+}
+
+resource "google_project_iam_member" "terraform_sa_roles" {
+  for_each = toset([
+  "roles/storage.admin",
+  "roles/bigquery.admin",
+  "roles/editor",
+  "roles/iam.serviceAccountUser"
+  ])
+  project = var.project
+  role    = each.value
+  member  = var.terrarform_sa
+}
+
+resource "google_project_iam_member" "airflow_sa_roles" {
+  for_each = toset([
+  "roles/storage.admin",
+  "roles/bigquery.admin",
+  "roles/editor",
+  "roles/dataproc.admin",
+  ])
+  project = var.project
+  role    = each.value
+  member  = var.airflow_sa
 }
