@@ -1,12 +1,14 @@
 # You can update all variables that are necessary for reproducing results 
+USER = "hilaryluitszching@gmail.com"
 PROJECT_ID = "western-diorama-455122-u6"
 LOCATION = "US"
-BUCKET = "weather_alerts_hlui"
-TEMP_BUCKET = "weather_alerts_hlui_temp"
 REGION = "us-central1"
+
+BUCKET = "weather-alerts-hlui"
+TEMP_BUCKET = "weather-alerts-hlui-temp"
 STAG_DATASET_ID = "weather_staging"
 PROD_DATASET_ID = "weather_prod"
-GCS_PATH = "gs://weather_alerts_hlui/"
+GCS_PATH = "gs://weather-alerts-hlui/"
 CLUSTER_NAME = 'weather-alerts'
 
 CONTAINER_PATH = "/opt/airflow/data"

@@ -119,7 +119,7 @@ def main():
     .mode("overwrite") \
     .option("project", project_id) \
     .option("dataset", stag_dataset_id) \
-    .option("table", "weather_alerts") \
+    .option("table", "alerts_{execution_date}") \
     .save()
   
   # Get New Rows

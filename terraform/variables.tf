@@ -13,12 +13,8 @@ variable "location" {
   default     = "US"
 }
 
-variable "airflow_sa" {
+variable "service_account_name" {
   default = "serviceAccount:airflow@western-diorama-455122-u6.iam.gserviceaccount.com"
-}
-
-variable "terraform_sa" {
-  default = "serviceAccount:terraform@western-diorama-455122-u6.iam.gserviceaccount.com"
 }
 
 variable "bq_prod_dataset_name" {
