@@ -74,5 +74,5 @@ WIP
     * `Connection Id` = `google_cloud_default`
     * `Connection Type` = `Google Cloud`
     * `Keyfile Path` = `/opt/airflow/google/credentials.json`
-12. Go back to the `DAGa` tab and trigger the DAGs
+12. Go back to the `DAGs` tab and trigger the DAGs
     
