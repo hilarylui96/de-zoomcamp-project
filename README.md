@@ -77,5 +77,5 @@ WIP
     * `Connection Type` = `Google Cloud`
     * `Keyfile Path` = `/opt/airflow/google/credentials.json`
 12. Go back to the `DAGs` tab and trigger the DAGs
-13. Done 🎉 - You should see the prod and stag tables with the transformed weather alerts data in BigQuery
+13. Done 🎉 you should see the prod and stag tables with the transformed weather alerts data in BigQuery
     
