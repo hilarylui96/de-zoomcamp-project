@@ -62,19 +62,20 @@ WIP
     * Service Account Admin
     * Storage Admin
 4. Generate a JSON credential key
-    * store it in $HOME/.google/credentials.json (`mkdir .google`)
+    * store it in $HOME/.google/credentials.json (need to create a new folder called .google first `mkdir .google`)
     * upload it to Github repo as a repository secret and name it as `GOOGLE_CREDENTIALS`
 5. Create a bucket in GCS for your terraform state file and name it as `terraform-state-hlui`
 6. Update variables
     * `terraform/variables.tf`: update the values for `project`, `region`, `location`, `service_account_name` according to your GCS project
     * `dags/utilities/constants`: update `USER` to you email address, `PROJECT_ID`, `LOCATION`, `REGION` according to your GCS project
-7. Push the changes to your repo by `git add . && git push`and Terraform should create the necessary storage buckets and datasets in GCS for you
+7. Push the changes to your repo by `git add . && git push`and Terraform will automatically create the necessary storage buckets and datasets in GCS for you
 8. Run `mkdir data` on your machine to create a temp folder for storing the extracted data from API 
 9. Run `docker-compose up -d` to intialize Airflow in your container
-10. Open `http://localhost:8080/` in your browser
-11. Go to `Admin > Connections` > Create a new record`, set
+10. Open `http://localhost:8080/` in your browser to access the Airflow Webserver
+11. Go to `Admin > Connections` > Create a new record` in the Airflow Webserver, set
     * `Connection Id` = `google_cloud_default`
     * `Connection Type` = `Google Cloud`
     * `Keyfile Path` = `/opt/airflow/google/credentials.json`
 12. Go back to the `DAGs` tab and trigger the DAGs
+13. Done 🎉 - You should see the prod and stag tables with the transformed weather alerts data in BigQuery
     
