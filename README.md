@@ -46,7 +46,7 @@ The final production table is:
 * Clustered by `affectedZone`
 
 This design was chosen to:
-* Optimize queries filtering alerts within a recent time window (e.g., WHERE effective > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY))
+* Optimize queries filtering alerts within a recent time window (e.g. `WHERE effective > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)`)
 * Improve performance and cost efficiency for queries filtered or grouped by affectedZone, which has high cardinality and is frequently accessed
 
 ## Dashboard
