@@ -27,6 +27,8 @@ The tools and technologies ussed in this project are:
 
 ### ☁️ Weather Alerts Data Pipeline
 The data pipeline is orchestrated by Apache Airflow and follows an ELT (Extract, Load, Transform) pattern:
+![Screenshot 2025-03-31 at 5 50 52 PM](https://github.com/user-attachments/assets/1984bd12-1133-4301-9900-5afb90163928)
+
 #### Extract
 he initial data extraction is handled by a dockerized Apache Airflow instance running locally on a macOS host. Weather alerts are pulled from the NWS API and saved as raw JSON files. These files are then uploaded to a Google Cloud Storage (GCS) bucket for downstream processing.
 #### Transform
