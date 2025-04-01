@@ -50,7 +50,9 @@ This design was chosen to:
 * Improve performance and cost efficiency for queries filtered or grouped by affectedZone, which has high cardinality and is frequently accessed
 
 ## Dashboard
-WIP
+
+![Screenshot 2025-03-31 at 10 10 24 PM](https://github.com/user-attachments/assets/46d5a69d-e1ea-4ac0-87db-fc05375e7f0e)
+[Weather Alerts Dashboard (DE Zoomcamp Project)](https://lookerstudio.google.com/s/tWkdtYZvucQ)
 
 ## How to reproduce this project?
 1. Clone this repo `git clone https://github.com/hilarylui96/de-zoomcamp-project.git`
