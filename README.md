@@ -73,7 +73,7 @@ WIP
 9. Run `docker-compose up -d` to intialize Airflow in your container
 10. Open `http://localhost:8080/` in your browser to access the Airflow Webserver and log in with
     * Username = `airflow`
-    * Passworf = `airflow`
+    * Password = `airflow`
 12. Go to `Admin > Connections` > Create a new record` in the Airflow Webserver, set
     * `Connection Id` = `google_cloud_default`
     * `Connection Type` = `Google Cloud`
