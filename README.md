@@ -71,11 +71,13 @@ WIP
 7. Push the changes to your repo by `git add . && git push`and Terraform will automatically create the necessary storage buckets and datasets in GCS for you
 8. Run `mkdir data` on your machine to create a temp folder for storing the extracted data from API 
 9. Run `docker-compose up -d` to intialize Airflow in your container
-10. Open `http://localhost:8080/` in your browser to access the Airflow Webserver
-11. Go to `Admin > Connections` > Create a new record` in the Airflow Webserver, set
+10. Open `http://localhost:8080/` in your browser to access the Airflow Webserver and log in with
+    * Username = `airflow`
+    * Passworf = `airflow`
+12. Go to `Admin > Connections` > Create a new record` in the Airflow Webserver, set
     * `Connection Id` = `google_cloud_default`
     * `Connection Type` = `Google Cloud`
     * `Keyfile Path` = `/opt/airflow/google/credentials.json`
-12. Go back to the `DAGs` tab and trigger the DAGs
-13. Done 🎉 you should see the prod and stag tables with the transformed weather alerts data in BigQuery
+13. Go back to the `DAGs` tab and trigger the DAGs
+14. Done 🎉 you should see the prod and stag tables with the transformed weather alerts data in BigQuery
     
