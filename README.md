@@ -60,7 +60,7 @@ WIP
     * Service Account Admin
     * Storage Admin
 4. Generate a JSON credential key
-    * store it in $HOME/.google/credentials.json
+    * store it in $HOME/.google/credentials.json (`mkdir .google`)
     * upload it to Github repo as a repository secret and name it as `GOOGLE_CREDENTIALS`
 5. Create a bucket in GCS for your terraform state file and name it as `terraform-state-hlui`
 6. Update variables
