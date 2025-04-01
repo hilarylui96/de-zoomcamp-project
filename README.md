@@ -13,7 +13,7 @@ More details of the API can be found [here](https://www.weather.gov/documentatio
 
 ![Flowcharts (3)](https://github.com/user-attachments/assets/d5211c18-5aeb-4823-b503-b5136c3e48cd)
 
-The tools and technologies ussed in this project are: 
+The tools and technologies used in this project are: 
 * Cloud: Google Cloud Platform (GCP)
   * Managed Processing Cluster: Dataproc
   * Data Lake: Cloud Storage - Buckets
@@ -30,7 +30,7 @@ The data pipeline is orchestrated by Apache Airflow and follows an ELT (Extract,
 ![Screenshot 2025-03-31 at 5 50 52 PM](https://github.com/user-attachments/assets/1984bd12-1133-4301-9900-5afb90163928)
 
 #### Extract
-he initial data extraction is handled by a dockerized Apache Airflow instance running locally on a macOS host. Weather alerts are pulled from the NWS API and saved as raw JSON files. These files are then uploaded to a Google Cloud Storage (GCS) bucket for downstream processing.
+Initial data extraction is handled by a dockerized Apache Airflow instance running locally on a macOS host. Weather alerts are pulled from the NWS API and saved as raw JSON files. These files are then uploaded to a Google Cloud Storage (GCS) bucket for downstream processing.
 #### Transform
 The transformation step is performed using PySpark on Google Cloud Dataproc. A Python script stored in GCS runs in a Dataproc job to process the raw data. Transformations include:
 * Flattening nested JSON fields
